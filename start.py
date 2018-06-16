@@ -16,6 +16,7 @@ api = twitter.Api(
     access_token_key=access_token_key, access_token_secret=access_token_secret)
 
 users = api.GetFollowerIDs()
+print(users)
 
 today = datetime.date.today()
 save_friends(today, users)
