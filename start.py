@@ -2,7 +2,7 @@ import twitter
 import datetime
 
 from utils import get_env
-from storage import save_friends, get_diff
+from storage import save_friends, get_diff, save_result
 
 
 consumer_key = get_env('consumer_key')
@@ -25,5 +25,8 @@ yesterday = today - datetime.timedelta(days=1)
 
 unfollows, newfollows = get_diff(yesterday, today)
 
-for u in unfollows:
-    print(api.GetUser(u))
+unfollows = unfollows.map(lambda u: api.GetUser(u).screen_name)
+newfollows = newfollows.map(lambda u: api.GetUser(u).screen_name)
+
+save_result('result-%s' % today, 'unfollows:' +
+            ','.join(unfollows) + '\n' + 'newfollows:' + ','.join(newfollows))

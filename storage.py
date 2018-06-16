@@ -17,3 +17,7 @@ def get_diff(date1, date2):
     if r.scard(date1) == 0 or r.scard(date2) == 0:
         return [], []
     return r.sdiff(date1, date2), r.sdiff(date2, date1)
+
+
+def save_result(date, result):
+    r.set(date, result)
