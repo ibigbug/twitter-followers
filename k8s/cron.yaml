@@ -1,0 +1,39 @@
+apiVersion: batch/v1beta1
+kind: CronJob
+metadata:
+  name: hello
+spec:
+  schedule: "*/1 * * * *"
+  concurrencyPolicy: Forbid
+  jobTemplate:
+    spec:
+      template:
+        spec:
+          containers:
+          - name: followers
+            image: ibigbug/followers
+            imagePullPolicy: always
+          restartPolicy: OnFailure
+          env:
+            - name: consumer_key
+              valueFrom:
+                secretKeyRef:
+                  name: twitter_credentials
+                  key: consumer_key
+            - name: consumer_secret
+              valueFrom:
+                secretKeyRef:
+                  name: twitter_credentials
+                  key: consumer_secret
+            - name: access_token_key
+              valueFrom:
+                secretKeyRef:
+                  name: twitter_credentials
+                  key: access_token_key
+            - name: access_token_secret
+              valueFrom:
+                secretKeyRef:
+                  name: twitter_credentials
+                  key: access_token_secret
+            - name: redis_host
+              value: redis-master
