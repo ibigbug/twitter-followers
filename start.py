@@ -25,8 +25,8 @@ yesterday = today - datetime.timedelta(days=1)
 
 unfollows, newfollows = get_diff(yesterday, today)
 
-unfollows = unfollows.map(lambda u: api.GetUser(u).screen_name)
-newfollows = newfollows.map(lambda u: api.GetUser(u).screen_name)
+unfollows = map(lambda u: api.GetUser(u).screen_name, unfollows)
+newfollows = map(lambda u: api.GetUser(u).screen_name, newfollows)
 
 save_result('result-%s' % today, 'unfollows:' +
             ','.join(unfollows) + '\n' + 'newfollows:' + ','.join(newfollows))
