@@ -36,6 +36,11 @@ spec:
                   secretKeyRef:
                     name: twitter-credentials
                     key: access_token_secret
+              - name: mailgun_apikey
+                valueFrom:
+                  secretKeyRef:
+                    name: twitter-credentials
+                    key: mailgun_apikey
               - name: redis_host
                 value: redis-master
               - name: to_notify

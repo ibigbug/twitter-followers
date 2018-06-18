@@ -14,7 +14,8 @@ def send_notification(email, text):
             'subject': 'You have new un/follows',
             'text': text,
         })
-    print(r.json())
+    print(r.text)
+    return r.status_code == 200
 
 
 if __name__ == '__main__':

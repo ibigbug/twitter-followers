@@ -40,5 +40,5 @@ if get_by_key('result-%s' % today) != 'done':
 result_keys = get_all_result_keys()
 for k in result_keys:
     if get_by_key(k) != 'done':
-        send_notification(get_env('to_notify'), get_by_key(k))
-        save_result('result-%s' % today, 'done')
+        if send_notification(get_env('to_notify'), get_by_key(k)):
+            save_result('result-%s' % today, 'done')
