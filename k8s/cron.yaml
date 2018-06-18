@@ -38,3 +38,5 @@ spec:
                     key: access_token_secret
               - name: redis_host
                 value: redis-master
+              - name: to_notify
+                value: a@b.com
