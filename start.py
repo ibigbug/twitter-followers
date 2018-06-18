@@ -41,4 +41,4 @@ result_keys = get_all_result_keys()
 for k in result_keys:
     if get_by_key(k) != 'done':
         if send_notification(get_env('to_notify'), get_by_key(k)):
-            save_result('result-%s' % today, 'done')
+            save_result(k, 'done')
