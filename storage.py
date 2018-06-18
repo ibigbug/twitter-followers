@@ -21,3 +21,11 @@ def get_diff(date1, date2):
 
 def save_result(date, result):
     r.set(date, result)
+
+
+def get_all_result_keys():
+    return r.keys('result-*')
+
+
+def get_by_key(k):
+    return r.get(k)
