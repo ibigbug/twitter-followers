@@ -19,4 +19,4 @@ def send_notification(email, text):
 
 
 if __name__ == '__main__':
-    send_notification('akabyw@gmail.com', 'test')
+    print(send_notification('akabyw@gmail.com', 'test'))

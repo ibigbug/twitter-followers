@@ -29,7 +29,7 @@ unfollows, newfollows = get_diff(yesterday, today)
 unfollows = map(lambda u: api.GetUser(u).screen_name, unfollows)
 newfollows = map(lambda u: api.GetUser(u).screen_name, newfollows)
 
-if get_by_key('result-%s' % today) != 'done':
+if get_by_key('result-%s' % today) != b'done':
     save_result(
         'result-%s' % today,
         ('unfollows:' +
@@ -39,6 +39,6 @@ if get_by_key('result-%s' % today) != 'done':
 
 result_keys = get_all_result_keys()
 for k in result_keys:
-    if get_by_key(k) != 'done':
+    if get_by_key(k) != b'done':
         if send_notification(get_env('to_notify'), get_by_key(k)):
-            save_result(k, 'done')
+            save_result(k, b'done')
