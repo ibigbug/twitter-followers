@@ -3,7 +3,7 @@ kind: CronJob
 metadata:
   name: twitter-followers
 spec:
-  schedule: "*/1 * * * *"
+  schedule: "* */1 * * *"
   concurrencyPolicy: Forbid
   jobTemplate:
     spec:
@@ -44,4 +44,4 @@ spec:
               - name: redis_host
                 value: redis-master
               - name: to_notify
-                value: a@b.com
+                value: akabyw@gmail.com
